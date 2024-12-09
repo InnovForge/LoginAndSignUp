@@ -20,7 +20,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
-    private boolean loginUser(String email, String password) {
+    public boolean loginUser(String email, String password) {
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
             //get user
             String sql = "SELECT password FROM \"java-login-user\" WHERE email = ?";
@@ -261,9 +261,14 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String email = jTextFieldEmail.getText();
         String password = new String(jPasswordField1.getPassword());
+        if(email.isEmpty() || password.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please fill in all information!");
+            return;
+        }
         if (loginUser(email, password)) {
             full_name = getFullName(email);
-            JOptionPane.showMessageDialog(null, "Đăng nhập thành công!");
+            JOptionPane.showMessageDialog(null, "Login successful!");
             Home home = new Home();
             home.getFullName(full_name);
             home.setVisible(true);
@@ -271,7 +276,7 @@ public class Login extends javax.swing.JFrame {
             home.setLocationRelativeTo(null);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Sai email hoặc mật khẩu!");
+            JOptionPane.showMessageDialog(null, "Email or password is incorrect!!");
         }
     }//GEN-LAST:event_jButtonLoginActionPerformed
 

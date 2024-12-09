@@ -281,19 +281,19 @@ public class SignUp extends javax.swing.JFrame {
         String email = jTextFieldEmail.getText();
         String password = new String(jPasswordFieldPassword.getPassword());
                 if (fullName.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng điền đầy đủ thông tin!");
+                    JOptionPane.showMessageDialog(null, "Please fill in all information!");
                     return;
                 }
 
                 if (isEmailExist(email)) {
-                    JOptionPane.showMessageDialog(null, "Email đã được sử dụng!");
+                    JOptionPane.showMessageDialog(null, "Email already exists!");
                     return;
                 }
 
                 if (registerUser(fullName, email, password)) {
-                    JOptionPane.showMessageDialog(null, "Đăng ký thành công!");
+                    JOptionPane.showMessageDialog(null, "Registration successful!");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Đăng ký không thành công, vui lòng thử lại!");
+                    JOptionPane.showMessageDialog(null, "Registration failed, please try again!");
                 }
     }//GEN-LAST:event_jButtonSignUpActionPerformed
 
