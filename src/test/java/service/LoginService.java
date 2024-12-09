@@ -13,7 +13,10 @@ import fronent.Login;
 public class LoginService {
     Login login = new Login();
      public String login(String email, String password) {
-        
+        if(email.isEmpty() || password.isEmpty())
+        {
+            return "Please fill in all information!";
+        }
         if(login.loginUser(email, password))
         {
               return "Login successful!";

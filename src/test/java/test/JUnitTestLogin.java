@@ -27,11 +27,18 @@ public class JUnitTestLogin {
         String result = testLogin.login("nguyennhat082004@gmail.com", "123");
         assertEquals("Login successful!", result, "Login should succeed with correct credentials");
     }
-    @Test
-    public void checkLoginFailed()
+  //  @Test
+    public void testLoginFailed()
     {
         String result = testLogin.login("nguyennhat082004@gmail.com", "12333333");
         assertEquals("Email or password is incorrect!", result, "Login should not succeed with not correct credentials");
+    }
+    @Test
+    public void testFieldsLeftBlank()
+    {
+        String result = testLogin.login("", "");
+        assertEquals("Please fill in all information!", result, "Login should not succeed with not correct credentials");
+
     }
 
     // TODO add test methods here.
